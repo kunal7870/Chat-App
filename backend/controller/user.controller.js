@@ -8,7 +8,7 @@ export const signup = async (req, res) => {
 
     try {
         if (password !== confirmPass) {
-            return res.status(400).json({ error: "Passwords do not match" });
+            return res.status(400).json({ error: "Passwords dooo not match" });
         }
 
         const existingUser = await User.findOne({ email });
@@ -27,11 +27,15 @@ export const signup = async (req, res) => {
         await newUser.save();
         if (newUser) {
             createTokenAndSaveCookie(newUser._id, res);
-            res.status(201).json({ message: "User created successfully", newUser });
+            res.status(201).json({ message: "User created successfully", useri:{
+                _id: newUser._id,
+                fullname: newUser.fullname,
+                email: newUser.email
+            } });
         }
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         res.status(500).json({ error: "Something went wrong" });
     }
 };
