@@ -69,4 +69,19 @@ export const logout = async(req,res) => {
         console.log(error)
         res.status(500).json({error: "internal server error"})
     }
+};
+
+//to get all users from database
+
+export const allUsers = async (req,res) => {
+  try {
+    const loggedUser = req.useri._id;
+    const allUsers = await User.find({ _id : {$ne: loggedUser}}).select("-password");
+    res.status(201).json({
+        allUsers
+    })
+  } catch (error) {
+    console.log("Error in alluser controller: ", error);
+  }
 }
+

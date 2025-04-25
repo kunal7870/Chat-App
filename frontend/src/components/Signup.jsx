@@ -1,9 +1,12 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import axios from "axios";
+import { useAuth } from '../context/Authprovider';
+import { Link } from 'react-router-dom';
 
 
 const Signup = () => {
+    const [authUser, setAuthUser] = useAuth()
     const {
         register,
         handleSubmit,
@@ -27,14 +30,15 @@ const Signup = () => {
         };
         // console.log(userInfo);
         await axios
-            .post("http://localhost:3000/user/signup", userInfo)
+            .post("/api/user/signup", userInfo)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 if(response.data){
                     alert("signup successfull")
 
                 }
                 localStorage.setItem("ChatApp",JSON.stringify(response.data))
+                setAuthUser(response.data)
             })
             .catch((error) => {
                 if(error.response){
@@ -108,7 +112,7 @@ const Signup = () => {
 
                     {/* Text feild */}
                     <div className='flex gap-4 flex-col items-center my-3'>
-                        <h1>Have an account ?<span className='text-blue-400 underline ml-2 cursor-pointer'>Log in</span> </h1>
+                        <h1>Have an account ?<Link to="/login" className='text-blue-400 underline ml-2 cursor-pointer'>Log in</Link> </h1>
                         <input type="submit" value="Signup" className='bg-green-700 rounded-md px-2 py-1 cursor-pointer' />
 
                     </div>

@@ -3,17 +3,17 @@ import Cookies from 'js-cookie'
 
 export const AuthContext = createContext()
 
-const Authprovider = ({children}) => {
+export const Authprovider = ({children}) => {
     const initialUserState = Cookies.get("jwt") || localStorage.getItem("ChatApp");
 
     //parse the user data and store in state
     const [authUser, setAuthUser] = useState(initialUserState? JSON.parse(initialUserState): undefined);
 
   return (
-    <Authprovider.Provider value={[authUser, setAuthUser]}>
+    <AuthContext.Provider value={[authUser, setAuthUser]}>
         {children}
-    </Authprovider.Provider>
+    </AuthContext.Provider>
   )
 }
 
-export const useAuth = ()=> useContext(AuthContext);
+export const useAuth = ()=> useContext(AuthContext)

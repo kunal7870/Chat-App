@@ -1,6 +1,6 @@
 import React from 'react'
 
-const User = () => {
+function User ({ user }) {
   return (  
       <div className='flex bg-gray-900 items-center gap-5 mx-2 my-2 rounded-s hover:bg-slate-800 duration-300 cursor-pointer'>
                 <div className="avatar online ml-2 p-1">
@@ -9,8 +9,8 @@ const User = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className='font-bold'>kunal</h1>
-                    <span>kunal@afngmail.com</span>
+                    <h1 className='font-bold'>{user.fullname}</h1>
+                    <span>{user.email}</span>
                 </div>
             </div>
   )

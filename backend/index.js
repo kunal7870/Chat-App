@@ -3,12 +3,14 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import userRoute from "./routes/user.route.js"
 import cors from "cors"
+import cookieParser from "cookie-parser"
 
 const app = express()
 dotenv.config()
 
 app.use(express.json());   //middleware
 app.use(cors());         //uesing cors
+app.use(cookieParser()); 
 
 const PORT = process.env.PORT || 5000;
 const URI = process.env.MONGODB_UR
@@ -21,7 +23,7 @@ try {
 }
 
 
-app.use("/user",userRoute); //routes
+app.use("/api/user",userRoute); //routes
 
 
 // app.get('/', (req, res) => {
