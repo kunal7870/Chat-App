@@ -4,12 +4,14 @@ import mongoose from "mongoose"
 import userRoute from "./routes/user.route.js"
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import messageRoute from "./routes/message.route.js"
+import { app, server } from "./SocketIO/server.js"
 
-const app = express()
+
 dotenv.config()
 
 app.use(express.json());   //middleware
-app.use(cors());         //uesing cors
+app.use(cors());         //using cors
 app.use(cookieParser()); 
 
 const PORT = process.env.PORT || 5000;
@@ -24,12 +26,13 @@ try {
 
 
 app.use("/api/user",userRoute); //routes
+app.use("/api/message",messageRoute); //routes
 
 
 // app.get('/', (req, res) => {
 //   res.send('Hello Kunal ji!')
 // })
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 })

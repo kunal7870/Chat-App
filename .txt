@@ -1,0 +1,22 @@
+......Message Model......
+
+kunal(sender) ==> hi amit
+amit(receiver) ==> hi kunal
+
+
+_id= 0*12345 (generate by mongodb)
+kunal(SenderId) = ufusegyrfue
+amit(ReceiverId) = akfhubuerf
+Message = " hi amit "
+
+_id= 0*12345 (generate by mongodb)
+amit(senderId) = ufiueahryfef        //sender
+kunal(receiverId) = fiuhaeiurf       // receiver
+Message = " hello kunal "            // message
+
+
+.......Conversation Model..........
+
+_id= 0*12345 (generate by mongodb)
+members[senderid, receiverid]
+messages[_id = 0*12345, _id=0*12346]

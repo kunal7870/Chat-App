@@ -1,6 +1,8 @@
 import React from 'react'
+import useConversation from '../../zustand/useConversation'
 
 const chatuser = () => {
+    const { selectedConversation } = useConversation(); //to get current selected user
     return (
 
         <div className='h-[10vh] bg-slate-800 flex gap-4 justify-center items-center hover:bg-slate-700 duration-300'>
@@ -10,8 +12,8 @@ const chatuser = () => {
                 </div>
             </div>
             <div>
-                <h1 className='text-lg'>Name title</h1>
-                <span className='text-sm'>Name@gmail.com</span>
+                <h1 className='text-lg'>kunal</h1>
+                <span className='text-sm'>offline</span>
             </div>
 
         </div>
