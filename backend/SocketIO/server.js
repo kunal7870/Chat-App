@@ -13,6 +13,11 @@ const io = new Server(server,{
     }
 })
 
+//for realtime messages
+export const getReceiverSocketId = (receiverId) =>{
+    return users[receiverId];
+}
+
 const users ={};
 
 //used to listen events on server side

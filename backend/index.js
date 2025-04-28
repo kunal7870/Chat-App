@@ -6,16 +6,18 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import messageRoute from "./routes/message.route.js"
 import { app, server } from "./SocketIO/server.js"
+import path from "path"
 
 
 dotenv.config()
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());   //middleware
 app.use(cors());         //using cors
 app.use(cookieParser()); 
 
-const PORT = process.env.PORT || 5000;
-const URI = process.env.MONGODB_UR
+
+const URI = process.env.MONGODB_URI
 
 try {
     mongoose.connect(URI)
@@ -29,6 +31,14 @@ app.use("/api/user",userRoute); //routes
 app.use("/api/message",messageRoute); //routes
 
 
+//-------code for deployment---------
+// if(process.env.NODE_ENV === "production"){
+//   const dirPath = path.resolve();
+//   app.use(express.static("./frontend/dist"));
+//   app.get("*",(req,res)=>{
+//     res.sendFile(path.resolve(dirPath,"./frontend/dist","index.html"))
+//   })
+// }
 // app.get('/', (req, res) => {
 //   res.send('Hello Kunal ji!')
 // })

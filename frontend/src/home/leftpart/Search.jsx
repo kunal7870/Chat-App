@@ -1,11 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
+import useConversation from '../../zustand/useConversation';
+import useGetAllUsers from '../../context/useGetAllUsers';
+import { toast } from 'react-hot-toast';
+
 
 const search = () => {
+    const [search,setSearch] = useState("");
+    const {setSelectedConversation } = useConversation();
+    const [allUsers] = useGetAllUsers();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(!search) return;
+        console.log(allUsers.allUsers);
+        const conversation = allUsers.allUsers.find((useri) =>
+          useri.fullname?.toLowerCase().includes(search.toLowerCase()));
+        if(conversation){
+            setSelectedConversation(conversation);
+            setSearch("")
+        } else {
+            toast.error("no user found")
+
+        }
+    }
     return (
         <div className='h-[8vh]'>
-            <form action="">
-                <label className="input m-5 ml-10  border-none flex items-center gap-2">
-                    <input type="text" className="grow" placeholder="Search" />
+            <form onSubmit={handleSubmit}>
+                <label className="input m-5 border-none flex items-center gap-2">
+                    <input
+                        type="text"
+                        className="grow"
+                        placeholder="Search"
+                        value={search}
+                        onChange={(e)=>setSearch(e.target.value)}
+                    />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"

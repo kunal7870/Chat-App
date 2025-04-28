@@ -3,8 +3,11 @@ import React, { useEffect, useRef } from 'react'
 import useGetMessage from '../../context/useGetMessage.js'
 import Loading from '../../components/Loading.jsx';
 import Message from './Message.jsx';
+import useGetSocketMessage from '../../context/useGetSocketMessage.js';
 const Messeges = () => {
     const {loading,messages} = useGetMessage();
+
+    useGetSocketMessage(); //listen incoming messages
     // console.log(messages)
 
     const lastMsgRef = useRef();
@@ -19,7 +22,7 @@ const Messeges = () => {
     return (
         <div className='overflow-y-auto h-[80vh] scroller' style={{maxHeight:"calc(80vh-20vh)"}}>
 
-            {loading?(<Loading/>):(messages.length>0 && messages.map((message) =>(
+            {loading?(<Loading/>):(messages.length > 0 && messages.map((message) =>(
               <div key={message._id} ref={lastMsgRef}>
               <Message message={message} />
             </div>

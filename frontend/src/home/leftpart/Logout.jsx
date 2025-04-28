@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import React, { useState } from 'react'
+import { toast } from 'react-hot-toast';
 import { CiLogout } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 
@@ -12,10 +13,10 @@ function Logout () {
         const res = await axios.post("/api/user/logout")
         localStorage.removeItem("ChatApp");
         Cookies.remove("jwt");
-        alert("logged out succesfully");
+        toast.success("logged out succesfully");
         window.location.reload();
       } catch (error) {
-        console.log({error: "error in logout", error});
+        console.log({error: "error in logout"});
       }
     };
 
