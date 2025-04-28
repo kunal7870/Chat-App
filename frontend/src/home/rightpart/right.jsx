@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Chatuser from './chatuser'
-import Messeges from './Messages.jsx'
+import Messages from './Messages.jsx'
 import Typesend from './Typesend'
 import useConversation from '../../zustand/useConversation'
 import Loading from '../../components/Loading'
@@ -17,7 +17,7 @@ const Right = () => {
     <div className='bg-slate-900 text-white  w-full h-screen'>
       {!selectedConversation ? (<NoChatSelected />) : (<div>
         <Chatuser />
-        <Messeges />
+        <Messages />
         <Typesend />
 
 

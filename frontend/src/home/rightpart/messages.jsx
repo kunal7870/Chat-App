@@ -4,7 +4,7 @@ import useGetMessage from '../../context/useGetMessage.js'
 import Loading from '../../components/Loading.jsx';
 import Message from './Message.jsx';
 import useGetSocketMessage from '../../context/useGetSocketMessage.js';
-const Messeges = () => {
+const Messages = () => {
     const {loading,messages} = useGetMessage();
 
     useGetSocketMessage(); //listen incoming messages
@@ -37,4 +37,4 @@ const Messeges = () => {
     )
 }
 
-export default Messeges
+export default Messages
