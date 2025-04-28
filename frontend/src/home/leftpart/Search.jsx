@@ -12,7 +12,7 @@ const search = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(!search) return;
-        console.log(allUsers.allUsers);
+        // console.log(allUsers.allUsers);
         const conversation = allUsers.allUsers.find((useri) =>
           useri.fullname?.toLowerCase().includes(search.toLowerCase()));
         if(conversation){

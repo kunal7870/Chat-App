@@ -56,7 +56,7 @@ export const login = async(req,res) => {
             email: useri.email
         }})
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         res.status(500).json({ error: "Something went wrong" });
     }
 }
@@ -66,7 +66,7 @@ export const logout = async(req,res) => {
         res.clearCookie("jwt")
         res.status(200).json({message: "User logout successfully"})
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         res.status(500).json({error: "internal server error"})
     }
 };

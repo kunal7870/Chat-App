@@ -42,7 +42,7 @@ export const sendMessage = async (req, res)=>{
         
 
     } catch (error) {
-        console.log("Error in sendMessage", error)
+        // console.log("Error in sendMessage", error)
         res.status(500).json({error: " server error"})
     }
 }
@@ -81,7 +81,7 @@ export const getMessage = async (req, res) => {
         const messages = conversation.messages;
         res.status(200).json(messages); // 200 OK
     } catch (error) {
-        console.log("error in getMessage", error);
+        // console.log("error in getMessage", error);
         res.status(500).json({ error: "Server error in getMessage" }); //  500 for server errors
     }
 }
