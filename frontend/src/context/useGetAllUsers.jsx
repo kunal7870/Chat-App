@@ -22,7 +22,7 @@ function useGetAllUsers() {
                 setallUsers(response.data)
                 setloading(false);
             } catch (error) {
-              console.log({error : "Error in useGetAllusers: " + error})
+              console.log("Error in useGetAllusers: " + error)
             }
         };
         getUsers();
