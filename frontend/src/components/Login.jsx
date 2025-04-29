@@ -5,7 +5,7 @@ import { useAuth } from '../context/Authprovider'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
-const Login = () => {
+function Login () {
     const [authUser, setAuthUser] = useAuth()
 
     const {
