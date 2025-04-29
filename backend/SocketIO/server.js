@@ -2,6 +2,7 @@ import { Server } from "socket.io";
 import http from "http";
 import express from "express";
 import { Socket } from "dgram";
+import cors from "cors";
 
 const app = express()
 
@@ -10,6 +11,7 @@ const io = new Server(server,{
     cors:{
         origin:["https://chat-app-frontend-5toi.onrender.com"],
         methods:["GET","POST"],
+        credentials: true
     }
 })
 
