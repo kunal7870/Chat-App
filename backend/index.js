@@ -13,7 +13,24 @@ dotenv.config()
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());   //middleware
-app.use(cors());         //using cors
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3002",
+  "https://chat-app-frontend.onrender.com"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);        //using cors
 app.use(cookieParser()); 
 
 
